@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { BookOpen, Menu, X } from "lucide-react";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("inicio");
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   const navigation = [
     { name: "Inicio", href: "#inicio", id: "inicio" },
@@ -16,7 +17,7 @@ export default function Header() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const headerHeight = 80; // Altura del header fijo
+      const headerHeight = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition =
         elementPosition + window.pageYOffset - headerHeight;
@@ -29,38 +30,74 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
-  // Detectar sección activa en el viewport
+  // Detectar sección activa en el viewport - CONFIGURACIÓN MEJORADA
   useEffect(() => {
+    // Limpiar observer anterior si existe
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+
     const sections = navigation
       .map((item) => document.getElementById(item.id))
       .filter(Boolean);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: "-20% 0px -70% 0px", // Ajustar según necesidad
-        threshold: 0.1,
-      }
-    );
+    const options = {
+      root: null,
+      rootMargin: "-20% 0px -70% 0px", // Margen más conservador
+      threshold: 0.3, // Umbral más bajo para activación más temprana
+    };
+
+    observerRef.current = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, options);
 
     sections.forEach((section) => {
-      if (section) observer.observe(section);
+      if (section) observerRef.current?.observe(section);
     });
 
     return () => {
-      sections.forEach((section) => {
-        if (section) observer.unobserve(section);
-      });
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
     };
   }, []);
 
-  // Manejar click en logo para ir al inicio
+  // Manejar el scroll manualmente como fallback
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 100; // Offset para activación temprana
+
+      // Encontrar la sección actual basada en la posición de scroll
+      for (const item of navigation) {
+        const element = document.getElementById(item.id);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetHeight = element.offsetHeight;
+
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(item.id);
+            break;
+          }
+        }
+      }
+    };
+
+    // Agregar listener de scroll como fallback
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Resto del código permanece igual...
   const handleLogoClick = () => {
     window.scrollTo({
       top: 0,
