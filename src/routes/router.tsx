@@ -3,7 +3,7 @@ import LayoutMain from "../components/layouts/LayoutDashboard";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Dashboard from "../pages/Dashboard";
 import { studentRoutes } from "../features/students/routes/StudentRoutes";
-import { teacherRoutes } from "../features/teachers/routes/TeacherRoutes";
+import { teacherRoutes } from "../features/teacher/routes/TeacherRoutes";
 import { LoginForm } from "../features/auth/components/LoginForm";
 import UnauthorizedPage from "../pages/UnauthorizedPage";
 import NotFoundPage from "../pages/NotFoundPage";

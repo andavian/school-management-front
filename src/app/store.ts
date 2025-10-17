@@ -3,8 +3,11 @@ import { configureStore } from "@reduxjs/toolkit";
 // Aquí importaremos los reducers después
 import authReducer from "../features/auth/slices/authSlice";
 import studentsReducer from "../features/students/slices/studentsSlice";
-import teachersReducer from "../features/teachers/slices/teachersSlice";
+import teachersReducer from "../features/teacher/slices/teachersSlice";
 import coursesReducer from "../features/courses/slices/coursesSlice";
+import teacherCoursesReducer from "../features/teacher/slices/teacherCoursesSlice";
+//import gradesReducer from "../features/grades/slices/gradesSlice";
+//import attendanceReducer from "../features/attendance/slices/attendanceSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +15,9 @@ export const store = configureStore({
     students: studentsReducer,
     teachers: teachersReducer,
     courses: coursesReducer,
+    teacherCourses: teacherCoursesReducer, // Cursos del teacher logueado
+    //grades: gradesReducer,
+    //attendance: attendanceReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
