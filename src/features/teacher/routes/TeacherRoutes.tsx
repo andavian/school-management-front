@@ -1,4 +1,4 @@
-import TeachersPage from "../pages/TeachersPage";
+import TeachersPage from "../../../pages/Admin/TeachersPage";
 import { withRole } from "../../../routes/whithRole";
 
 export const teacherRoutes = [

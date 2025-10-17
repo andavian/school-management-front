@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { Plus, Search, Filter, Download, Upload } from "lucide-react";
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import {
   fetchStudents,
   createStudent,
   updateStudent,
   deleteStudent,
   setFilters,
-} from "../slices/studentsSlice";
-import StudentsTable from "../components/StudentsTable";
-import StudentModal from "../components/StudentsModal";
-import type { Student } from "../../../types/student.types";
+} from "../../features/students/slices/studentsSlice";
+import StudentsTable from "../../features/students/components/StudentsTable";
+import StudentModal from "../../features/students/components/StudentsModal";
+import type { Student } from "../../types/student.types";
 
 const StudentsPage = () => {
   const dispatch = useAppDispatch();

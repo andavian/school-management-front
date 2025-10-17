@@ -6,8 +6,8 @@ import studentsReducer from "../features/students/slices/studentsSlice";
 import teachersReducer from "../features/teacher/slices/teachersSlice";
 import coursesReducer from "../features/courses/slices/coursesSlice";
 import teacherCoursesReducer from "../features/teacher/slices/teacherCoursesSlice";
-//import gradesReducer from "../features/grades/slices/gradesSlice";
-//import attendanceReducer from "../features/attendance/slices/attendanceSlice";
+import gradesReducer from "../features/teacher/slices/gradesSlice";
+import attendanceReducer from "../features/teacher/slices/attendanceSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,8 +16,8 @@ export const store = configureStore({
     teachers: teachersReducer,
     courses: coursesReducer,
     teacherCourses: teacherCoursesReducer, // Cursos del teacher logueado
-    //grades: gradesReducer,
-    //attendance: attendanceReducer,
+    grades: gradesReducer,
+    attendance: attendanceReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

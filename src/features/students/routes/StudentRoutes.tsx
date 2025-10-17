@@ -1,4 +1,4 @@
-import StudentsPage from "../pages/StudentsPage";
+import StudentsPage from "../../../pages/Admin/StudentsPage";
 //import StudentDetails from "../pages/StudentDetails";
 import { withRole } from "../../../routes/whithRole";
 

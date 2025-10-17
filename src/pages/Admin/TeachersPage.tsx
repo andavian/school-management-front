@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Plus, GraduationCap } from "lucide-react";
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { fetchTeachers } from "../slices/teachersSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { fetchTeachers } from "../../features/teacher/slices/teachersSlice";
 
 const TeachersPage = () => {
   const dispatch = useAppDispatch();
