@@ -16,7 +16,7 @@ export default function TestimonialsSection() {
       avatar: "https://via.placeholder.com/150/4F46E5/FFFFFF?text=MG",
       rating: 5,
       content:
-        "La Escuela Paravachasca no solo me dio una excelente base académica, sino que me enseñó valores y disciplina que aplico en mi carrera universitaria. Los profesores realmente se preocupan por el éxito de cada estudiante.",
+        "El IPET Paravachasca no solo me dio una excelente base académica, sino que me enseñó valores y disciplina que aplico en mi carrera universitaria. Los profesores realmente se preocupan por el éxito de cada estudiante.",
       year: "Promoción 2022",
     },
     {
@@ -101,8 +101,8 @@ export default function TestimonialsSection() {
           </h2>
           <p className="text-lg text-gray-600">
             Descubre las experiencias reales de nuestra comunidad educativa.
-            Estudiantes, padres y docentes comparten lo que hace especial a la
-            Escuela Paravachasca.
+            Estudiantes, padres y docentes comparten lo que hace especial al
+            Instituto Paravachasca.
           </p>
         </div>
 

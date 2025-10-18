@@ -3,7 +3,8 @@ import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import FeaturesSection from "../components/FeaturesSection";
 import TestimonialsSection from "../components/TestimonialsSection";
-import ContactSection from "../components/ContactSection";
+import ContactInfoSection from "../components/ContactInfoSection";
+import ContactFormSection from "../components/ContactFormSection";
 
 export default function LandingPage() {
   return (
@@ -14,7 +15,8 @@ export default function LandingPage() {
         <Hero />
         <FeaturesSection />
         <TestimonialsSection />
-        <ContactSection />
+        <ContactInfoSection />
+        <ContactFormSection />
       </main>
 
       <Footer />

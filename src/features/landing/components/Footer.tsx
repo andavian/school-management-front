@@ -47,9 +47,9 @@ export default function Footer() {
   ];
 
   const academicLinks = [
-    { name: "Nivel Inicial", href: "/inicial" },
-    { name: "Primaria", href: "/primaria" },
-    { name: "Secundaria", href: "/secundaria" },
+    { name: "Ciclo Básico", href: "/basico" },
+    { name: "Electromecánica", href: "/electromecanica" },
+    { name: "Electricidad", href: "/electricidad" },
     { name: "Programas Especiales", href: "/programas" },
   ];
 
@@ -63,7 +63,7 @@ export default function Footer() {
     {
       icon: Instagram,
       name: "Instagram",
-      href: "https://instagram.com/escuelaparavachasca",
+      href: "https://www.instagram.com/ipet132paravachascaok",
       color: "hover:text-pink-600",
     },
     {
@@ -75,7 +75,7 @@ export default function Footer() {
     {
       icon: Youtube,
       name: "YouTube",
-      href: "https://youtube.com/escuelaparavachasca",
+      href: "https://www.youtube.com/c/ipetparavachasca",
       color: "hover:text-red-600",
     },
   ];
@@ -107,14 +107,14 @@ export default function Footer() {
                 <BookOpen className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-bold">Escuela Paravachasca</h3>
+                <h3 className="text-xl font-bold">IPET 132 Paravachasca</h3>
                 <p className="text-gray-400 text-sm">Alta Gracia</p>
               </div>
             </div>
 
             <p className="text-gray-400 mb-6 leading-relaxed">
               Formando líderes del mañana con educación de calidad, valores y
-              tecnología desde 1985. Comprometidos con el desarrollo integral de
+              tecnología desde 1994. Comprometidos con el desarrollo integral de
               cada estudiante.
             </p>
 
@@ -123,12 +123,12 @@ export default function Footer() {
               <div className="flex items-center gap-3 text-gray-400">
                 <MapPin className="w-5 h-5 text-primary-400" />
                 <span className="text-sm">
-                  Av. del Libertador 123, Alta Gracia
+                  Gdor, A. Zanichelli 335, X5186 Alta Gracia, Córdoba
                 </span>
               </div>
               <div className="flex items-center gap-3 text-gray-400">
                 <Phone className="w-5 h-5 text-primary-400" />
-                <span className="text-sm">+54 3547 123456</span>
+                <span className="text-sm">+54 3547 423858</span>
               </div>
               <div className="flex items-center gap-3 text-gray-400">
                 <Mail className="w-5 h-5 text-primary-400" />
@@ -275,7 +275,7 @@ export default function Footer() {
         <div className="container mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-gray-400 text-sm">
-              © 2024 Escuela Paravachasca. Todos los derechos reservados.
+              © 2024 IPET 132 Paravachasca. Todos los derechos reservados.
             </div>
 
             <div className="flex flex-wrap gap-6 text-sm">

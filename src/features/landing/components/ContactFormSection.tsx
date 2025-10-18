@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Clock,
-  Send,
-  Check,
-  X,
-  AlertCircle,
-} from "lucide-react";
+import { Send, Check, X, AlertCircle } from "lucide-react";
 
 interface FormData {
   name: string;
@@ -27,7 +18,7 @@ interface FormErrors {
   message?: string;
 }
 
-export default function ContactSection() {
+export default function ContactFormSection() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -42,6 +33,7 @@ export default function ContactSection() {
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -103,13 +95,27 @@ export default function ContactSection() {
 
     setIsSubmitting(true);
     setSubmitStatus("idle");
+    setErrorMessage("");
 
     try {
-      // Simular envío del formulario
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // Simular envío del formulario con posibilidad de error
+      await new Promise((resolve, reject) => {
+        setTimeout(() => {
+          // Simular un error aleatorio para demostración (20% de probabilidad)
+          if (Math.random() < 0.2) {
+            reject(
+              new Error(
+                "Error de conexión. Por favor, verifica tu internet e intenta nuevamente."
+              )
+            );
+          } else {
+            resolve("success");
+          }
+        }, 1500);
+      });
 
       // Aquí iría la lógica real de envío al backend
-      console.log("Datos del formulario:", formData);
+      console.log("Datos del formulario enviados:", formData);
 
       setSubmitStatus("success");
       setFormData({
@@ -122,102 +128,34 @@ export default function ContactSection() {
       });
     } catch (error) {
       setSubmitStatus("error");
+      // Usamos el error para mostrar un mensaje más específico
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      } else {
+        setErrorMessage(
+          "Error desconocido al enviar el formulario. Por favor, intenta más tarde."
+        );
+      }
+      console.error("Error al enviar el formulario:", error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const contactInfo = [
-    {
-      icon: MapPin,
-      title: "Visítanos",
-      content: "Av. del Libertador 123, Alta Gracia, Córdoba",
-      description: "Campus principal",
-    },
-    {
-      icon: Phone,
-      title: "Llámanos",
-      content: "+54 3547 123456",
-      description: "Lunes a Viernes 8:00-18:00",
-    },
-    {
-      icon: Mail,
-      title: "Escríbenos",
-      content: "info@paravachasca.edu.ar",
-      description: "Te responderemos en 24h",
-    },
-    {
-      icon: Clock,
-      title: "Horario de atención",
-      content: "Lunes a Viernes: 7:30 - 18:30",
-      description: "Sábados: 8:00 - 13:00",
-    },
-  ];
-
   return (
     <section id="contact" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Estamos aquí para ayudarte
-          </h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Contáctanos</h2>
           <p className="text-lg text-gray-600">
-            ¿Tienes preguntas sobre admisiones, programas educativos o quieres
-            visitar nuestra escuela? Contáctanos y te responderemos a la
-            brevedad.
+            ¿Tienes preguntas específicas? Envíanos un mensaje y te
+            responderemos a la brevedad.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-8">
-              Información de contacto
-            </h3>
-
-            <div className="space-y-6 mb-8">
-              {contactInfo.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-4 p-4 bg-white rounded-xl border border-gray-200 hover:shadow-md transition"
-                >
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-6 h-6 text-primary-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">
-                      {item.title}
-                    </h4>
-                    <p className="text-gray-900 font-medium">{item.content}</p>
-                    <p className="text-gray-500 text-sm">{item.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Map Placeholder */}
-            <div className="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-              <div className="bg-gradient-to-r from-primary-500 to-secondary-500 h-48 flex items-center justify-center text-white">
-                <div className="text-center">
-                  <MapPin className="w-12 h-12 mx-auto mb-2" />
-                  <p className="font-semibold">Mapa de ubicación</p>
-                  <p className="text-primary-100 text-sm">
-                    Escuela Paravachasca
-                  </p>
-                </div>
-              </div>
-              <div className="p-4">
-                <p className="text-gray-600 text-sm text-center">
-                  Av. del Libertador 123, Alta Gracia, Córdoba, Argentina
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Contact Form */}
+        <div className="max-w-2xl mx-auto">
           <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
               Envíanos un mensaje
             </h3>
 
@@ -247,7 +185,8 @@ export default function ContactSection() {
                       Error al enviar
                     </h4>
                     <p className="text-sm text-red-700">
-                      Por favor, intenta nuevamente o contáctanos por teléfono.
+                      {errorMessage ||
+                        "Por favor, intenta nuevamente o contáctanos por teléfono."}
                     </p>
                   </div>
                 </div>
@@ -351,9 +290,13 @@ export default function ContactSection() {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition bg-white"
                   >
                     <option value="">Seleccionar curso</option>
-                    <option value="inicial">Nivel Inicial</option>
-                    <option value="primaria">Primaria (1°-6°)</option>
-                    <option value="secundaria">Secundaria (1°-5°)</option>
+                    <option value="basic">Ciclo Básico (1°-3°)</option>
+                    <option value="electromechanical">
+                      Orientación Electromecánica (4°-7°)
+                    </option>
+                    <option value="electricity">
+                      Orientación Electricidad (4°-7°)
+                    </option>
                     <option value="otros">Otros programas</option>
                   </select>
                 </div>

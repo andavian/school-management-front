@@ -53,9 +53,9 @@ export default function FeaturesSection() {
             Una educación que transforma vidas
           </h2>
           <p className="text-lg text-gray-600">
-            En la Escuela Paravachasca nos enfocamos en desarrollar el potencial
-            completo de cada estudiante, combinando tradición educativa con
-            innovación pedagógica.
+            En el Instituto Paravachasca nos enfocamos en desarrollar el
+            potencial completo de cada estudiante, combinando tradición
+            educativa con innovación pedagógica.
           </p>
         </div>
 

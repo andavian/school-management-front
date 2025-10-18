@@ -27,9 +27,10 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl">
-              En la Escuela Paravachasca combinamos tradición educativa con
-              innovación tecnológica. Un entorno donde cada estudiante descubre
-              su potencial y construye su futuro.
+              En el Instituto Provincial de Educación Técnica N° 132
+              "Paravachasca" combinamos tradición educativa con innovación
+              tecnológica. Un entorno donde cada estudiante descubre su
+              potencial y construye su futuro.
             </p>
 
             {/* CTA Buttons */}
@@ -80,7 +81,7 @@ export default function Hero() {
               <div className="bg-gradient-to-br from-primary-500 to-secondary-500 rounded-2xl w-full max-w-md lg:max-w-lg h-80 lg:h-96 flex items-center justify-center text-white overflow-hidden shadow-2xl">
                 <img
                   src="https://via.placeholder.com/500x400/4F46E5/FFFFFF?text=Escuela+Paravachasca"
-                  alt="Estudiantes de la Escuela Paravachasca en el campus"
+                  alt="Estudiantes del Instituto Paravachasca en el campus"
                   className="w-full h-full object-cover"
                 />
               </div>
